@@ -1,38 +1,152 @@
-.App {
+body {
+  padding-top: 40px;
+}
+
+
+/* navbar start */
+
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #081b08;
+}
+
+#navbar ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 30px;
+}
+
+#navbar ul li {
+  padding: 0px 14px 0px 14px;
+}
+
+.nav-link {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: Courier, sans-serif;
+}
+
+
+/* Bootstrap override to fix padding on navbar */
+
+#bootstrap-override-ul {
+  margin: auto;
+}
+
+
+/* navbar end */
+
+#welcome-section {
+  height: 100vh;
+  margin-top: -68px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#links {
+  display: flex;
+  flex-direction: row;
+}
+
+.resumeIcon,
+.linkedinIcon,
+.githubIcon {
+  height: 80px;
+  margin: 14px;
+}
+
+#project-section {
+  height: 100vh;
+  margin-top: -68px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#projects {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+.projectTile {
+  text-align: center;
+  border-style: solid;
+  margin: 20px;
+  transition: 0.5s;
+  width: 400px;
+}
+
+.projectTile a {
+  text-decoration: none;
+}
+
+.projectTile:hover {
+  background-color: #cceee7;
+  box-shadow: 1px 1px 1px #141414;
+}
+
+.projectTile a .projectLink {
+  padding-top: 40px;
+  padding-bottom: 8px;
+  text-decoration: none;
+  color: black;
+}
+
+
+/* Separate div identifier for small rectangle on bottom */
+
+.bottomBarOfProjectTile {
+  display: flex;
+  flex-direction: row;
+}
+
+.projectInfo {
+  text-align: right;
+  vertical-align: bottom;
+  margin-top: 14px;
+}
+
+h2 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h3 {
+  padding-top: 1.5em;
+  display: block;
+  margin-bottom: 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+/* https://www.dev-tips-and-tricks.com/animate-elements-scrolled-view-vanilla-js */
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
+@keyframes fade-in {
   from {
-    transform: rotate(0deg);
+      opacity: 0;
+      transform: scale(0.95, 0.95);
   }
   to {
-    transform: rotate(360deg);
+      opacity: 1;
   }
+}
+
+.fade-in-element {
+  animation: fade-in 1.4s;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+.modal-body p,
+ul {
+  text-align: left;
 }

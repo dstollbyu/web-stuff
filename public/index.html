@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
-      name="description"
+      name="Project Portfolio - Darren Stoll"
       content="Web site created using create-react-app"
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
@@ -24,9 +24,48 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Project Portfolio - Darren Stoll</title>
+    <script type="text/javascript">
+      //https://www.dev-tips-and-tricks.com/animate-elements-scrolled-view-vanilla-js Allows fade-in when scrolling down the window for elements
+      var animateHTML = () => {
+        var elems;
+        var windowHeight;
+        // Initialize by putting all elements with hidden class into an array and obtaining the window height
+        function init() {
+
+            elems = document.querySelectorAll('.hidden');
+            windowHeight = window.innerHeight;
+            console.log(windowHeight);
+            addEventHandlers();
+            checkPosition();
+        }
+
+        function addEventHandlers() {
+            window.addEventListener('scroll', checkPosition);
+            window.addEventListener('resize', init);
+        }
+        // Cycle through each hidden element
+        function checkPosition() {
+            for (var i = 0; i < elems.length; i++) {
+                var positionFromTop = elems[i].getBoundingClientRect().top + (1 / 6 * windowHeight);
+                console.log(positionFromTop);
+                // If the hidden element comes into view, change classes so that the element fades in
+                if (positionFromTop - windowHeight <= 0) {
+                    elems[i].className = elems[i].className.replace(
+                        'hidden',
+                        'fade-in-element'
+                    );
+                }
+            }
+        }
+
+        return {
+            init: init
+        };
+      };
+    </script>
   </head>
-  <body>
+  <body onload="animateHTML().init();">
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
     <!--
