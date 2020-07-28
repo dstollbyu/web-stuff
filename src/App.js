@@ -1,7 +1,6 @@
 import React from 'react';
 import './App.css';
 import Navbar from './Navbar.js';
-import resumeLogo from './images/icons8-resume-80.png';
 import linkedinLogo from './images/LI-In-Bug.png';
 import githubLogo from './images/GitHub-Mark-120px-plus.png';
 
@@ -41,9 +40,8 @@ const searchValues = {
 /* APPLICATION START */
 function App() {
 
-  // useState variables that are used to set visibility on main + projects/resume
+  // useState variables that are used to set visibility on main + projects
   const [mainVisibility, setMainVisibility] = React.useState(true);
-  const [resumeVis, setResumeVis] = React.useState(false);
 
   // Toggle function that sets the main div visibility to false and the associated button component's div to true
   const setVisibility = (compVis, compVisFunction) => {
@@ -74,11 +72,9 @@ const MainPage = () => {
           <p>I am currently proficient in HTML, CSS, JavaScript, React.js, and D3.js.</p>
           <p>Currently, I'm getting more familiar with React and Node.js.</p>
           <p>I am always learning!</p>
-          {/* Putting links here in buttons to various resources about myself, like resume and linkedin */}
+          {/* Putting links here in buttons to various resources about myself */}
           <div id="links">
-              {/* image source for resume from icons8.com */}
-              {/* CHECKPOINT - figure out how to display a pdf in a webpage + onclick handlers for anchor tags or images */}
-              <a href="./files/Darren_Stoll_Resume.pdf" target="_blank" rel="noopener noreferrer"><img className="resumeIcon" src={resumeLogo} alt="Resume PDF" title="Resume PDF" /></a>
+              {/* image source for icons from icons8.com */}
               <a href="https://www.linkedin.com/in/darren-stoll-5849791ab/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
               <a href="https://github.com/dstollbyu" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
           </div>
