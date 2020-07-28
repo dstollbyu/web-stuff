@@ -1,22 +1,49 @@
 import React from 'react';
 
 // ProjectTile component that displays information and link about a completed project
-const ProjectTile = ({ name, icon, link, target, info }) => {
+const ProjectTile = ({ name, icon, link, target, info, setVis, visArgs }) => {
   const [modal, setModal] = React.useState(false);
+  const linkExists = (link !== "");
+  // Apparently the function can only be passed to onClick if it is reassigned to a new variable
+  const reSetVis = setVis;
 
+  if (linkExists) {
+    return (
+      <>
+        <div className="projectTile">
+          {/* wrap the anchor tag around the div so that most of the tile can be highlighted to work as a link */}
+          <a href={link}>
+            <div className="projectLink" >
+                {/* Create image from svg and path */}
+                {icon}
+                <h3>{name}</h3>
+            </div>
+          </a>
+          <div className="bottomBarOfProjectTile">
+            <a style={{width: '100%'}} height="24" href={link}><div>&nbsp;</div></a>
+            <div className="projectInfo" onClick={() => {setModal(!modal)}}>
+              <InfoIcon target={target} />
+            </div>
+            {/* https://www.digitalocean.com/community/tutorials/react-modal-component for modals in react */}
+            <Modal show={modal} handleClose={() => setModal(!modal)} info={info} name={name} />
+          </div>
+        </div>
+      </>
+    )
+  }
   return (
     <>
-      <div className="projectTile">
+      <div className="projectTile" style={{cursor:'pointer'}}>
         {/* wrap the anchor tag around the div so that most of the tile can be highlighted to work as a link */}
-        <a href={link}>
-          <div className="projectLink">
+        <span>
+          <div className="projectLink" onClick={() => {reSetVis(visArgs[0], visArgs[1]);}}>
               {/* Create image from svg and path */}
               {icon}
               <h3>{name}</h3>
           </div>
-        </a>
+        </span>
         <div className="bottomBarOfProjectTile">
-          <a style={{width: '100%'}} height="24" href={link}><div>&nbsp;</div></a>
+          <span style={{width: '100%'}} height="24" onClick={() => {reSetVis(visArgs[0], visArgs[1]);}}><div>&nbsp;</div></span>
           <div className="projectInfo" onClick={() => {setModal(!modal)}}>
             <InfoIcon target={target} />
           </div>
@@ -26,6 +53,7 @@ const ProjectTile = ({ name, icon, link, target, info }) => {
       </div>
     </>
   )
+  
 };
 
 // Modal component that handles the popup when clicking the info icon

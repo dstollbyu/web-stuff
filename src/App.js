@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
-import Navbar from './Navbar.js';
+import Navbar from './components/Navbar.js';
 import linkedinLogo from './images/LI-In-Bug.png';
 import githubLogo from './images/GitHub-Mark-120px-plus.png';
-import ProjectTile from './components/projectTile.js'
+import ProjectTile from './components/projectTile.js';
+import Choropleth from './components/choropleth.js';
 
 // navbarArgs holds the values to be used in the header navbar
 const navbarArgs = [
@@ -43,6 +44,9 @@ function App() {
 
   // useState variables that are used to set visibility on main + projects
   const [mainVisibility, setMainVisibility] = React.useState(true);
+  
+  const [choroVis, setChoroVis] = React.useState(false);
+  const choroVisArgs = [choroVis, setChoroVis];
 
   // Toggle function that sets the main div visibility to false and the associated button component's div to true
   const setVisibility = (compVis, compVisFunction) => {
@@ -52,50 +56,46 @@ function App() {
   
   return (
     <div>
-      {mainVisibility && <MainPage />}
+      {mainVisibility && 
+        <div>
+        <Navbar links={navbarArgs} />
+
+        <main>
+          {/* Welcome begin */}
+          <section id="welcome-section" name="welcome-section">
+            <h1>Welcome!</h1>
+            <p>My name is <b>Darren Stoll</b>.</p>
+            <p>I am an aspiring web developer with a focus on JavaScript and related libraries.</p>
+            <p>I am currently proficient in HTML, CSS, JavaScript, and React.</p>
+            <p>Currently, I'm getting more familiar with React and Node.js.</p>
+            <p>I am always learning!</p>
+            {/* Putting links here in buttons to various resources about myself */}
+            <div id="links">
+                {/* image source for icons from icons8.com */}
+                <a href="https://www.linkedin.com/in/darren-stoll-5849791ab/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
+                <a href="https://github.com/dstollbyu" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
+            </div>
+            <p>Scroll down to see what I have to show you.</p>
+          </section>
+          {/* Welcome end */}
+          {/* Projects begin */}
+          <section id="project-section" className="hidden" name="project-section">
+            <h2>Highlighted showcase projects</h2>
+            <div id="projects" name="projects">
+              {/* <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="" target="pomoModal" info={pomoValues.info} />
+              <ProjectTile name="Markdown Previewer" icon={markValues.svg} link="" target="markModal" info={markValues.info} /> */}
+              {/* <ProjectTile name="Choropleth" icon={choroValues.svg} link="" target="choroModal" info={choroValues.info} setVis={setVisibility} visArgs={choroVisArgs} /> */}
+              <ProjectTile name="Search Page" icon={searchValues.svg} link="https://dstollbyu-hacker-stories.netlify.app/" target="searchModal" info={searchValues.info} />
+            </div>
+          </section>
+          {/* Projects end */}
+        </main>
+      </div>
+    }
+      {choroVis && <Choropleth setVis={setVisibility} setChoroVis={setChoroVis} />}
     </div>
   );
 }
 /* APPLICATION END */
-
-// MainPage component
-const MainPage = () => {
-  return (
-    <div>
-      <Navbar links={navbarArgs} />
-
-      <main>
-        {/* Welcome begin */}
-        <section id="welcome-section" name="welcome-section">
-          <h1>Welcome!</h1>
-          <p>My name is <b>Darren Stoll</b>.</p>
-          <p>I am an aspiring web developer with a focus on JavaScript and related libraries.</p>
-          <p>I am currently proficient in HTML, CSS, JavaScript, React.js, and D3.js.</p>
-          <p>Currently, I'm getting more familiar with React and Node.js.</p>
-          <p>I am always learning!</p>
-          {/* Putting links here in buttons to various resources about myself */}
-          <div id="links">
-              {/* image source for icons from icons8.com */}
-              <a href="https://www.linkedin.com/in/darren-stoll-5849791ab/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
-              <a href="https://github.com/dstollbyu" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
-          </div>
-          <p>Scroll down to see what I have to show you.</p>
-        </section>
-        {/* Welcome end */}
-        {/* Projects begin */}
-        <section id="project-section" className="hidden" name="project-section">
-          <h2>Highlighted showcase projects</h2>
-          <div id="projects" name="projects">
-            <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="PomodoroClock" target="pomoModal" info={pomoValues.info} />
-            <ProjectTile name="Markdown Previewer" icon={markValues.svg} link="MarkdownPreview" target="markModal" info={markValues.info} />
-            <ProjectTile name="Choropleth" icon={choroValues.svg} link="Choropleth" target="choroModal" info={choroValues.info} />
-            <ProjectTile name="Search Page" icon={searchValues.svg} link="https://dstollbyu-hacker-stories.netlify.app/" target="searchModal" info={searchValues.info} />
-          </div>
-        </section>
-        {/* Projects end */}
-      </main>
-    </div>
-  )
-}
 
 export default App;
