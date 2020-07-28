@@ -43,6 +43,7 @@ function App() {
 
   // useState variables that are used to set visibility on main + projects/resume
   const [mainVisibility, setMainVisibility] = React.useState(true);
+  const [resumeVis, setResumeVis] = React.useState(false);
 
   // Toggle function that sets the main div visibility to false and the associated button component's div to true
   const setVisibility = (compVis, compVisFunction) => {
@@ -63,6 +64,7 @@ const MainPage = () => {
   return (
     <div>
       <Navbar links={navbarArgs} />
+
       <main>
         {/* Welcome begin */}
         <section id="welcome-section" name="welcome-section">
@@ -76,7 +78,7 @@ const MainPage = () => {
           <div id="links">
               {/* image source for resume from icons8.com */}
               {/* CHECKPOINT - figure out how to display a pdf in a webpage + onclick handlers for anchor tags or images */}
-              <img className="resumeIcon" style={{cursor:'pointer'}} src={resumeLogo} alt="Resume PDF" title="Resume PDF" onClick={() => {console.log('hi')}} />
+              <a href="./files/Darren_Stoll_Resume.pdf" target="_blank" rel="noopener noreferrer"><img className="resumeIcon" src={resumeLogo} alt="Resume PDF" title="Resume PDF" /></a>
               <a href="https://www.linkedin.com/in/darren-stoll-5849791ab/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
               <a href="https://github.com/dstollbyu" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
           </div>
