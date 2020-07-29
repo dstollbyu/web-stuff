@@ -5,7 +5,8 @@ import Navbar from './components/Navbar.js';
 import linkedinLogo from './images/LI-In-Bug.png';
 import githubLogo from './images/GitHub-Mark-120px-plus.png';
 import ProjectTile from './components/projectTile.js';
-import Choropleth from './components/choropleth.js';
+import SearchPage from './components/SearchPage.js';
+import ScrollToTop from './components/ScrollToTop.js';
 
 // navbarArgs holds the values to be used in the header navbar
 const navbarArgs = [
@@ -30,11 +31,6 @@ const markValues = {
   info: <><p> Pomodoro Clock is a countdown timer that is used to break down work into intervals separated by short breaks. You can read more about the technique <a href="https://en.wikipedia.org/wiki/Pomodoro_Technique" target="_blank" rel="noopener noreferrer">here</a>. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>Bootstrap</li> <li>JavaScript</li> <li>React</li> </ul></>
 }
 
-const choroValues = {
-  svg: <svg width="64" height="64" viewBox="0 0 16 16"> <path fillRule="evenodd" d="M15.817.613A.5.5 0 0 1 16 1v13a.5.5 0 0 1-.402.49l-5 1a.502.502 0 0 1-.196 0L5.5 14.51l-4.902.98A.5.5 0 0 1 0 15V2a.5.5 0 0 1 .402-.49l5-1a.5.5 0 0 1 .196 0l4.902.98 4.902-.98a.5.5 0 0 1 .415.103zM10 2.41l-4-.8v11.98l4 .8V2.41zm1 11.98l4-.8V1.61l-4 .8v11.98zm-6-.8V1.61l-4 .8v11.98l4-.8z"/> </svg>,
-  info: <><p> Choropleth maps display geographical areas and data variables associated with the regions in it. You can read more about them <a href="https://datavizcatalogue.com/methods/choropleth.html" target="_blank" rel="noopener noreferrer">here</a>. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>D3</li> </ul></>
-}
-
 const searchValues = {
   svg: <svg width="64" height="64" viewBox="0 0 16 16"> <path fillRule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/> <path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/> </svg>,
   info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Jest (for testing)</li> </ul></>
@@ -46,8 +42,10 @@ function App() {
   // Use react-router-dom to control links to different components
   return (
     <Switch>
-      <Route exact path="/" component={MainPage} />
-      <Route path="/choropleth" component={Choropleth} />
+      <ScrollToTop>
+        <Route exact path="/" component={MainPage} />
+        <Route path="/SearchPage" component={SearchPage} />
+      </ScrollToTop>
     </Switch>
   );
 }
@@ -82,7 +80,7 @@ const MainPage = () => {
           <div id="projects" name="projects">
             {/* <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="" target="pomoModal" info={pomoValues.info} />
             <ProjectTile name="Markdown Previewer" icon={markValues.svg} link="" target="markModal" info={markValues.info} /> */}
-            <ProjectTile name="Search Page" icon={searchValues.svg} link="https://dstollbyu-hacker-stories.netlify.app/" target="searchModal" info={searchValues.info} />
+            <ProjectTile name="Search Page" icon={searchValues.svg} link="/SearchPage" target="searchModal" info={searchValues.info} />
           </div>
         </section>
         {/* Projects end */}
