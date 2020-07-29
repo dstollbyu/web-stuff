@@ -1,11 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // ProjectTile component that displays information and link about a completed project
-const ProjectTile = ({ name, icon, link, target, info, setVis, visArgs }) => {
+const ProjectTile = ({ name, icon, link, target, info }) => {
   const [modal, setModal] = React.useState(false);
-  const linkExists = (link !== "");
-  // Apparently the function can only be passed to onClick if it is reassigned to a new variable
-  const reSetVis = setVis;
+  const linkExists = (link.substring(0,1) !== "/");
 
   if (linkExists) {
     return (
@@ -35,15 +34,15 @@ const ProjectTile = ({ name, icon, link, target, info, setVis, visArgs }) => {
     <>
       <div className="projectTile" style={{cursor:'pointer'}}>
         {/* wrap the anchor tag around the div so that most of the tile can be highlighted to work as a link */}
-        <span>
-          <div className="projectLink" onClick={() => {reSetVis(visArgs[0], visArgs[1]);}}>
+        <Link to={link}>
+          <div className="projectLink">
               {/* Create image from svg and path */}
               {icon}
               <h3>{name}</h3>
           </div>
-        </span>
+        </Link>
         <div className="bottomBarOfProjectTile">
-          <span style={{width: '100%'}} height="24" onClick={() => {reSetVis(visArgs[0], visArgs[1]);}}><div>&nbsp;</div></span>
+          <span style={{width: '100%'}} height="24"><div>&nbsp;</div></span>
           <div className="projectInfo" onClick={() => {setModal(!modal)}}>
             <InfoIcon target={target} />
           </div>

@@ -101,11 +101,11 @@ Promise.all([d3.json(EDUCATION_URL), d3.json(COUNTY_URL)]).then(function(files) 
     }(err);
 });
 
-const Choropleth = ({ setVis, setChoroVis }) => {
+const Choropleth = () => {
 
   return (
     <>
-      <NavbarProj setVis={setVis} setChoroVis={setChoroVis} />
+      <NavbarProj />
 
       <div id="title">Choropleth</div>
       <div id="description">Unemployment rate, by US county</div>

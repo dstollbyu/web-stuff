@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // NavbarProj component that renders the header navbar in the page, specifically designed for project pages
-const NavbarProj = ({ setVis, setChoroVis }) => {
+const NavbarProj = () => {
   return (
     <header>
       <nav id="navbar">
         <ul>
-          <li><span className="nav-link" style={{cursor:'pointer'}} onClick={() => setVis(true, setChoroVis)}>Home</span></li>;  
+          <li><Link className="nav-link" to="/">Home</Link></li>;  
         </ul>
       </nav>
     </header>
