@@ -9,10 +9,12 @@
     "axios": "^0.19.2",
     "d3": "^5.16.0",
     "lodash": "^4.17.19",
+    "marked": "^1.1.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "shortid": "^2.2.15",
     "topojson": "^3.0.2",
     "topojson-client": "^3.1.0"
   },

@@ -4,35 +4,10 @@ import { Link } from 'react-router-dom';
 // ProjectTile component that displays information and link about a completed project
 const ProjectTile = ({ name, icon, link, target, info }) => {
   const [modal, setModal] = React.useState(false);
-  const linkExists = (link.substring(0,1) !== "/");
 
-  if (linkExists) {
-    return (
-      <>
-        <div className="projectTile">
-          {/* wrap the anchor tag around the div so that most of the tile can be highlighted to work as a link */}
-          <a href={link}>
-            <div className="projectLink" >
-                {/* Create image from svg and path */}
-                {icon}
-                <h3>{name}</h3>
-            </div>
-          </a>
-          <div className="bottomBarOfProjectTile">
-            <a style={{width: '100%'}} height="24" href={link}><div>&nbsp;</div></a>
-            <div className="projectInfo" onClick={() => {setModal(!modal)}}>
-              <InfoIcon target={target} />
-            </div>
-            {/* https://www.digitalocean.com/community/tutorials/react-modal-component for modals in react */}
-            <Modal show={modal} handleClose={() => setModal(!modal)} info={info} name={name} />
-          </div>
-        </div>
-      </>
-    )
-  }
   return (
     <>
-      <div className="projectTile" style={{cursor:'pointer'}}>
+      <div className="projectTile">
         {/* wrap the anchor tag around the div so that most of the tile can be highlighted to work as a link */}
         <Link to={link}>
           <div className="projectLink">
@@ -42,7 +17,7 @@ const ProjectTile = ({ name, icon, link, target, info }) => {
           </div>
         </Link>
         <div className="bottomBarOfProjectTile">
-          <span style={{width: '100%'}} height="24"><div>&nbsp;</div></span>
+          <span style={{width: '100%'}} height="24"><Link to={link}><div style={{height: '100%'}}>&nbsp;</div></Link></span>
           <div className="projectInfo" onClick={() => {setModal(!modal)}}>
             <InfoIcon target={target} />
           </div>

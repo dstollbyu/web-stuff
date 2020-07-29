@@ -5,6 +5,8 @@ import Navbar from './components/Navbar.js';
 import linkedinLogo from './images/LI-In-Bug.png';
 import githubLogo from './images/GitHub-Mark-120px-plus.png';
 import ProjectTile from './components/projectTile.js';
+import MarkdownPreview from './components/MarkdownPreview.js';
+import PomodoroClock from './components/PomodoroClock.js';
 import SearchPage from './components/SearchPage.js';
 import ScrollToTop from './components/ScrollToTop.js';
 
@@ -15,7 +17,7 @@ const navbarArgs = [
     name: "Welcome"
   },
   {
-    link: "#projects",
+    link: "#project-section",
     name: "Projects"
   }
 ]
@@ -44,6 +46,8 @@ function App() {
     <Switch>
       <ScrollToTop>
         <Route exact path="/" component={MainPage} />
+        <Route path="/MarkdownPreview" component={MarkdownPreview} />
+        <Route path="/PomodoroClock" component={PomodoroClock} />
         <Route path="/SearchPage" component={SearchPage} />
       </ScrollToTop>
     </Switch>
@@ -78,8 +82,8 @@ const MainPage = () => {
         <section id="project-section" className="hidden" name="project-section">
           <h2>Highlighted showcase projects</h2>
           <div id="projects" name="projects">
-            {/* <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="" target="pomoModal" info={pomoValues.info} />
-            <ProjectTile name="Markdown Previewer" icon={markValues.svg} link="" target="markModal" info={markValues.info} /> */}
+            <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="/PomodoroClock" target="pomoModal" info={pomoValues.info} />
+            <ProjectTile name="Markdown Preview" icon={markValues.svg} link="/MarkdownPreview" target="markModal" info={markValues.info} />
             <ProjectTile name="Search Page" icon={searchValues.svg} link="/SearchPage" target="searchModal" info={searchValues.info} />
           </div>
         </section>
