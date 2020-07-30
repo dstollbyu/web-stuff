@@ -1,0 +1,86 @@
+.medContainer {
+  margin-top:14px;  
+  font-family:'Open Sans';
+  color: #4470AD;
+}
+
+.medHeader {
+  padding-top: 14px;
+  padding-bottom: 14px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  vertical-align: top;
+  max-width: 1140px;
+  margin: auto;
+}
+
+.medLogo {
+  font-size: 48px;
+}
+
+.medMotto {
+  font-size: 12px;
+}
+
+.medContactHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.medPhone {
+  font-size: 30px;
+  margin: 0;
+}
+
+/* medNavbar start */
+
+.medNavbar {
+  /* position: fixed;
+  top: 0;
+  left: 0; */
+  width: 100%;
+  height: 48px;
+  background-image: linear-gradient(#303030, #000000);
+}
+
+.medNavbar ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+.medNavbar ul li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.medNavbar ul a {
+  padding: 0px 28px 0px 28px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.medNavbar ul a:hover {
+  background: #404040;
+  transition: 0.35s ease-in-out;
+  
+}
+
+.medContent div {
+  background-size: cover;
+  background-repeat: no-repeat;
+  max-width: 100%;
+  height: 100vh;
+}
+
+/* medNavbar end */

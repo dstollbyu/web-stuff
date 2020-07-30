@@ -34,6 +34,11 @@ const MainPage = () => {
     info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Jest (for testing)</li> </ul></>
   }
 
+  const medValues = {
+    svg: <svg width="64" height="64" viewBox="0 0 16 16"> <path d="M4 1h5v1H4a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V6h1v7a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2z"/> <path d="M9 4.5V1l5 5h-3.5A1.5 1.5 0 0 1 9 4.5z"/> <path fill-rule="evenodd" d="M7 4a.5.5 0 0 1 .5.5v.634l.549-.317a.5.5 0 1 1 .5.866L8 6l.549.317a.5.5 0 1 1-.5.866L7.5 6.866V7.5a.5.5 0 0 1-1 0v-.634l-.549.317a.5.5 0 1 1-.5-.866L6 6l-.549-.317a.5.5 0 0 1 .5-.866l.549.317V4.5A.5.5 0 0 1 7 4zM5 9.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0 2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/> </svg>,
+    info: <><p>This is based on a number of medical office sites that you see on the web.</p><p>For this site, I used the following:<ul><li>React</li><li>CSS</li></ul></p></>
+  }
+
   return (
     <div>
       <Navbar links={navbarArgs} />
@@ -63,6 +68,7 @@ const MainPage = () => {
             <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="/PomodoroClock" target="pomoModal" info={pomoValues.info} />
             <ProjectTile name="Markdown Preview" icon={markValues.svg} link="/MarkdownPreview" target="markModal" info={markValues.info} />
             <ProjectTile name="Search Page" icon={searchValues.svg} link="/SearchPage" target="searchModal" info={searchValues.info} />
+            <ProjectTile name="Medical Template Site" icon={medValues.svg} link="/MedOfficeTemplate" target="medModal" info={medValues.info} />
           </div>
         </section>
         {/* Projects end */}

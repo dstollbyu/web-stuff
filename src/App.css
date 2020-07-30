@@ -11,6 +11,7 @@ body {
   left: 0;
   width: 100%;
   background-color: #081b08;
+  z-index: 1;
 }
 
 #navbar ul {
