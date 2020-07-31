@@ -7,7 +7,7 @@ const NavbarProj = () => {
     <header>
       <nav id="navbar">
         <ul>
-          <li><Link className="nav-link" to="/">Home</Link></li>;  
+          <li><Link className="nav-link" to="/">Home</Link></li>  
         </ul>
       </nav>
     </header>

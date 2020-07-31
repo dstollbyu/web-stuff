@@ -10,7 +10,6 @@ import SearchPage from './components/SearchPage.js';
 import MedOfficeTemplate from './components/MedOfficeTemplate.js';
 import ScrollToTop from './components/ScrollToTop.js';
 
-
 /* APPLICATION START */
 function App() {
   

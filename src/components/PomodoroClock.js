@@ -27,8 +27,8 @@ class Session extends React.Component {
       <div id="session-wrapper">
         <div id="session-length">{this.props.sessionLength}</div>
         <div id="session-arrows">
-          <button id="session-decrement" class="sessionControl" onClick={this.props.sessionDecrement}><i className="arrow down"></i></button> 
-          <button id="session-increment" class="sessionControl" onClick={this.props.sessionIncrement}><i className="arrow up"></i></button>
+          <button id="session-decrement" className="sessionControl" onClick={this.props.sessionDecrement}><i className="arrow down"></i></button> 
+          <button id="session-increment" className="sessionControl" onClick={this.props.sessionIncrement}><i className="arrow up"></i></button>
         </div>
         <div id="session-label">Session Length</div>
       </div>
@@ -42,8 +42,8 @@ class Break extends React.Component {
       <div id="break-wrapper">
         <div id="break-length">{this.props.breakLength}</div>
         <div id="break-arrows">
-          <button id="break-decrement" class="breakControl" onClick={this.props.breakDecrement}><i className="arrow down"></i></button> 
-          <button id="break-increment" class="breakControl" onClick={this.props.breakIncrement}><i className="arrow up"></i></button>
+          <button id="break-decrement" className="breakControl" onClick={this.props.breakDecrement}><i className="arrow down"></i></button> 
+          <button id="break-increment" className="breakControl" onClick={this.props.breakIncrement}><i className="arrow up"></i></button>
         </div>
         <div id="break-label">Break Length</div>
       </div>
