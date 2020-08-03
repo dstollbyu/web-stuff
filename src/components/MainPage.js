@@ -5,6 +5,7 @@ import githubLogo from '../images/GitHub-Mark-120px-plus.png';
 import ProjectTile from './projectTile.js';
 
 import profilePic from '../images/personPhotoZoomed.jpg';
+import twitchLogo from '../images/TwitchGlitchBlackOps.png';
 
 
 const MainPage = () => {
@@ -41,6 +42,11 @@ const MainPage = () => {
     info: <><p>This is based on a number of medical office sites that you see on the web.</p><p>For this site, I used the following:</p><ul><li>React</li><li>CSS</li></ul></>
   }
 
+  const clipValues = {
+    svg: <img src={twitchLogo} height="64" alt="" />,
+    info: <><p>Lipsum</p></>
+  }
+
   return (
     <div>
 
@@ -49,9 +55,11 @@ const MainPage = () => {
         <section id="welcome-section" name="welcome-section">
           <p style={{fontSize: '24px'}}>About me -<b>[Darren Stoll]</b></p>
           <img className="profilePic" src={profilePic} alt="" />
-          <p>I am an aspiring web developer with a focus on React.</p>
-          <p>I am currently proficient in JavaScript, React, Express, and Node.js.</p>
-          <p>I am always learning!</p>
+          <div className="welcomeDescription">
+            <p>I am an aspiring web developer with a focus on React.</p>
+            <p>I am currently proficient in JavaScript, React, Express, and Node.js.</p>
+            <p>I am always learning! On the side, I'm a gamer, and I occasionally speedrun the video game or two.</p>
+          </div>
           {/* Putting links here in buttons to various resources about myself */}
           <div id="links">
               {/* image source for icons from icons8.com */}
@@ -68,6 +76,7 @@ const MainPage = () => {
             <ProjectTile name="Markdown Preview" icon={markValues.svg} link="/MarkdownPreview" target="markModal" info={markValues.info} />
             <ProjectTile name="Search Page" icon={searchValues.svg} link="/SearchPage" target="searchModal" info={searchValues.info} />
             <ProjectTile name="Medical Template Site" icon={medValues.svg} link="/MedOfficeTemplate" target="medModal" info={medValues.info} />
+            <ProjectTile name="Twitch Clipper" icon={clipValues.svg} link="/TwitchClipper" target="clipModal" info={clipValues.info} />
           </div>
         </section>
         {/* Projects end */}
