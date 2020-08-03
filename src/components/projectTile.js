@@ -17,7 +17,7 @@ const ProjectTile = ({ name, icon, link, target, info }) => {
           </div>
         </Link>
         <div className="bottomBarOfProjectTile">
-          <span style={{width: '100%'}} height="24"><Link to={link}><div style={{height: '100%'}}>&nbsp;</div></Link></span>
+          <span style={{width: '100%'}}><Link to={link}><div style={{height: '100%'}}>&nbsp;</div></Link></span>
           <div className="projectInfo" onClick={() => {setModal(!modal)}}>
             <InfoIcon target={target} />
           </div>

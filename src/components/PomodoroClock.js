@@ -179,7 +179,7 @@ class PomodoroClock extends React.Component {
     return(
       <>
         <NavbarProj />
-        <div id="clock" style={{marginTop: '40px'}}>
+        <div id="clock" style={{marginTop: '100px'}}>
           <Timer toggleSessionOn={this.state.toggleSessionOn} totalTime={this.state.timer} timeMin={timeMin} timeSec={timeSec} handleStartStop = {this.handleStartStop} handleReset = {this.handleReset} />
           <div id="counters">
             <Break breakLength = {this.state.breakLength} breakDecrement = {this.breakDecrement} breakIncrement = {this.breakIncrement} />

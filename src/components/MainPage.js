@@ -1,22 +1,24 @@
 import React from 'react';
-import Navbar from './Navbar.js';
+// import Navbar from './Navbar.js';
 import linkedinLogo from '../images/LI-In-Bug.png';
 import githubLogo from '../images/GitHub-Mark-120px-plus.png';
 import ProjectTile from './projectTile.js';
 
+import profilePic from '../images/personPhotoZoomed.jpg';
+
 
 const MainPage = () => {
   // navbarArgs holds the values to be used in the header navbar
-  const navbarArgs = [
-    {
-      link: "#welcome-section",
-      name: "Welcome"
-    },
-    {
-      link: "#project-section",
-      name: "Projects"
-    }
-  ]
+  // const navbarArgs = [
+  //   {
+  //     link: "#welcome-section",
+  //     name: "Welcome"
+  //   },
+  //   {
+  //     link: "#project-section",
+  //     name: "Projects"
+  //   }
+  // ]
 
   // Values for the ProjectTile components
   const pomoValues = {
@@ -31,7 +33,7 @@ const MainPage = () => {
 
   const searchValues = {
     svg: <svg width="64" height="64" viewBox="0 0 16 16"> <path fillRule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/> <path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/> </svg>,
-    info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Jest (for testing)</li> </ul></>
+    info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i style={{border:'none'}}>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Jest (for testing)</li> </ul></>
   }
 
   const medValues = {
@@ -41,29 +43,26 @@ const MainPage = () => {
 
   return (
     <div>
-      <Navbar links={navbarArgs} />
 
-      <main>
+      <main className="main">
         {/* Welcome begin */}
         <section id="welcome-section" name="welcome-section">
-          <h1>Welcome!</h1>
-          <p>My name is <b>Darren Stoll</b>.</p>
-          <p>I am an aspiring web developer with a focus on JavaScript and related libraries.</p>
-          <p>I am currently proficient in HTML, CSS, JavaScript, and React.</p>
-          <p>Currently, I'm getting more familiar with React and Node.js.</p>
+          <p style={{fontSize: '24px'}}>About me -<b>[Darren Stoll]</b></p>
+          <img className="profilePic" src={profilePic} alt="" />
+          <p>I am an aspiring web developer with a focus on React.</p>
+          <p>I am currently proficient in JavaScript, React, Express, and Node.js.</p>
           <p>I am always learning!</p>
           {/* Putting links here in buttons to various resources about myself */}
           <div id="links">
               {/* image source for icons from icons8.com */}
-              <a href="https://www.linkedin.com/in/darren-stoll-5849791ab/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
-              <a href="https://github.com/dstollbyu" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
+              <a className="linkedinLink" href="https://www.linkedin.com/in/darren-stoll-5849791ab/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
+              <a className="githubLink" href="https://github.com/dstollbyu" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
           </div>
-          <p>Scroll down to see what I have to show you.</p>
         </section>
         {/* Welcome end */}
         {/* Projects begin */}
         <section id="project-section" className="hidden" name="project-section">
-          <h2>Highlighted showcase projects</h2>
+          <h2>Projects</h2>
           <div id="projects" name="projects">
             <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="/PomodoroClock" target="pomoModal" info={pomoValues.info} />
             <ProjectTile name="Markdown Preview" icon={markValues.svg} link="/MarkdownPreview" target="markModal" info={markValues.info} />

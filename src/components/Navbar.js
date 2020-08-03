@@ -6,9 +6,9 @@ const Navbar = ({links}) => {
     <header>
       <nav id="navbar">
         <ul>
-          {links.map((element, i) => {
+          {links != null ? links.map((element, i) => {
             return (<li key={i}><a className="nav-link" href={element.link}>{element.name}</a></li>);
-            })}
+            }) : <li>&nbsp;</li>}
         </ul>
       </nav>
     </header>

@@ -1,8 +1,3 @@
-body {
-  padding-top: 40px;
-}
-
-
 /* navbar start */
 
 #navbar {
@@ -34,18 +29,51 @@ body {
 
 /* navbar end */
 
+main.main {
+  display: flex;
+  background-color: #202020;
+  color: white;
+}
+
 #welcome-section {
   height: 100vh;
-  margin-top: -68px;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+}
+
+.profilePic {
+  height: 250px;
+  width: 250px;
+  object-fit: cover;
+  object-position: 50% top;
+  border-radius: 50%;
 }
 
 #links {
   display: flex;
   flex-direction: row;
+  background-color: #cecece;
+  border-radius: 10px;
+}
+
+#links a:hover.linkedinLink {
+  background-color:#cceee7;
+  border-radius: 10px 0 0 10px;
+  transition: background-color 0.5s;
+}
+
+#links .githubLink {
+  padding-left: 6px;
+}
+
+#links a:hover.githubLink {
+  background-color:#cceee7;
+  border-radius: 0 10px 10px 0;
+  transition: background-color 0.5s;
 }
 
 .resumeIcon,
@@ -57,7 +85,7 @@ body {
 
 #project-section {
   height: 100vh;
-  margin-top: -68px;
+  width: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -72,10 +100,11 @@ body {
 
 .projectTile {
   text-align: center;
-  border-style: solid;
-  margin: 20px;
+  border: 3px solid black;
+  background-color: white;
+  margin: 6px;
   transition: 0.5s;
-  width: 400px;
+  width: 240px;
 }
 
 .projectTile a {
@@ -88,21 +117,19 @@ body {
 }
 
 .projectTile a .projectLink {
-  padding-top: 40px;
-  padding-bottom: 8px;
+  padding-top: 20px;
+  padding-bottom: 4px;
   text-decoration: none;
   color: black;
 }
 
-.projectTile span .projectLink {
-  padding-top: 40px;
-  padding-bottom: 8px;
-  text-decoration: none;
-  color: black;
+.projectLink h3 {
+  margin-top: 6px;
+  padding: 0;
 }
 
-a {
-  color: blue;
+i {
+  border: none;
 }
 
 
@@ -111,12 +138,12 @@ a {
 .bottomBarOfProjectTile {
   display: flex;
   flex-direction: row;
+  height: 24px;
 }
 
 .projectInfo {
   text-align: right;
   vertical-align: bottom;
-  margin-top: 14px;
 }
 
 h2 {
@@ -177,6 +204,7 @@ h3 {
 .modal-main {
   position:fixed;
   background: white;
+  color: black;
   width: 500px;
   height: auto;
   top:30%;
@@ -191,6 +219,11 @@ h3 {
   -webkit-animation-duration: 0.4s;
   animation-name: animatetop;
   animation-duration: 0.4s
+}
+
+.modal-main a {
+  color: blue;
+  border: none;
 }
 
 .modal-footer {
