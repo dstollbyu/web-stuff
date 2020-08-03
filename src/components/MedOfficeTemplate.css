@@ -4,6 +4,10 @@
   color: #4470AD;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  color: #4470AD;
+}
+
 .medTop {
   position: fixed;
   top: 54px;
@@ -90,8 +94,13 @@
   color: black;
   text-align: center;
   position: relative;
-  top: 177px;
+  top: 56px;
   z-index: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
 }
 
 .medContent div.BG {
@@ -126,5 +135,23 @@
   background-image: url('../images/doctor5.jpg');
 }
 
+.medContent .medContentContainer {
+  background-color: rgba(255, 255, 255, 0.75);
+  max-width: 600px;
+  border-radius: 10px;
+  padding: 0px 20px 6px 20px;
+  margin-left: 14px;
+  margin-right: 14px;
+  
+}
+
+.medOfficeFooter {
+  height: 120px;
+  background-image: linear-gradient(#000000, #000000, #101010);
+  margin-top: 56px;
+  color: white;
+  display: flex;
+  justify-content: center;
+}
 
 /* medNavbar end */

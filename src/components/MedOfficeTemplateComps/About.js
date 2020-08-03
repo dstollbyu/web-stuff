@@ -31,7 +31,10 @@ const About = () => {
         <div className="medContent">
           {/* Transparent background behind text */}
           <div className="BG aboutBG"></div>
-          Lorem ipsum
+          <div className="medContentContainer">
+            <h2>About</h2>
+            <p>Lorem ipsum</p>
+          </div>
         </div>
       </>
     )

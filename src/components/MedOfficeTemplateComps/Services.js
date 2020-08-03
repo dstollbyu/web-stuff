@@ -31,7 +31,14 @@ const Services = () => {
         <div className="medContent">
           {/* Transparent background behind text */}
           <div className="BG servicesBG"></div>
-          Lorem ipsum
+          <div className="medContentContainer">
+            <h2>Services we provide</h2>
+            <ul>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+              <li>Lorem ipsum</li>
+            </ul>
+          </div>
         </div>
       </>
     )

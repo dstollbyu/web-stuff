@@ -44,6 +44,7 @@ const MedOfficeTemplate = () => {
         <Route path={`${path}/FAQ`} component={FAQ} />
         <Route path={`${path}/Contact`} component={Contact} />
       </Switch>
+      <MedOfficeFooter />
     </div>
   );
 };
@@ -76,7 +77,12 @@ const HomePage = () => {
         <div className="medContent">
           {/* Transparent background behind text */}
           <div className="BG homeBG"></div>
-          Lorem ipsum
+          <div className="medContentContainer">
+            <h2>Medical Office, the kind for you!</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id sodales elit, sed venenatis ex. Integer vel mauris turpis. Donec non sagittis ex. Pellentesque fermentum felis vel libero fermentum, et volutpat felis viverra. Phasellus eu finibus dolor. Nunc suscipit euismod dignissim. Nam ac metus lacinia, finibus nisl id, porttitor dolor.</p>
+            <p>Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam auctor lorem elit, vel interdum magna finibus eget. Vivamus ut ipsum sodales, dapibus mauris nec, dignissim arcu. Integer facilisis dignissim erat, et porta eros tempor et. In ipsum tortor, laoreet at aliquet in, blandit eget purus. Curabitur rhoncus est ut lorem consectetur varius. Nullam vitae enim in risus ornare dictum vitae sed risus. Fusce eleifend turpis eu aliquet condimentum. Integer vitae aliquam arcu, sed ullamcorper quam. In metus nulla, tincidunt vitae ultricies ullamcorper, finibus non lorem. Quisque imperdiet malesuada ligula, sit amet venenatis neque volutpat eget. Duis congue nunc sit amet tellus laoreet auctor. Cras hendrerit orci at suscipit aliquam. Sed eget orci ac nisi vulputate viverra. Vivamus et dolor consectetur, tincidunt ante vitae, molestie erat.</p> 
+            <p>Aenean aliquet consectetur magna, id tempor nulla suscipit ac. Nullam tristique feugiat eros ut varius. Nulla sed mollis dolor. Curabitur dapibus lectus ac luctus feugiat. Ut id mi vitae sapien accumsan eleifend. Fusce viverra efficitur sapien, eget malesuada orci maximus eget</p>
+          </div>
         </div>
       </>
     )
@@ -118,5 +124,14 @@ const MedOfficeHeader = () => {
     </div>
   );
 };
+
+// MedOfficeFooter component
+const MedOfficeFooter = () => {
+  return (
+    <div className="medOfficeFooter">
+      <h3 style={{color: 'white'}}>This is a footer</h3>
+    </div>
+  )
+}
 
 export default MedOfficeTemplate;

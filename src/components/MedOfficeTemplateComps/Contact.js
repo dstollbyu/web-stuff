@@ -31,7 +31,10 @@ const Contact = () => {
         <div className="medContent">
           {/* Transparent background behind text */}
           <div className="BG contactBG"></div>
-          Lorem ipsum
+          <div className="medContentContainer">
+            <h2>Contact Us</h2>
+            <p>Lorem ipsum</p>
+          </div>
         </div>
       </>
     )

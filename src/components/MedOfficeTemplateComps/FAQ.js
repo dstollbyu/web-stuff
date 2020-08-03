@@ -31,7 +31,10 @@ const FAQ = () => {
         <div className="medContent">
           {/* Transparent background behind text */}
           <div className="BG faqBG"></div>
-          Lorem ipsum
+          <div className="medContentContainer">
+            <h2>FAQ</h2>
+            <p>Lorem ipsum</p>
+          </div>
         </div>
       </>
     )
