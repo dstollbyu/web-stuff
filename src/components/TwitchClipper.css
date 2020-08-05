@@ -1,9 +1,13 @@
-.clipContainer {
+.clipBody {
   background-color: #404040;
+}
+
+.clipContainer {
   height: 100vh;
   margin-top: 54px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .search {
@@ -12,4 +16,9 @@
   border-radius: 10px;
   padding: 20px;
   height: 100px;
+  width: 200px;
+}
+
+.clipListContainer {
+  background-color: white;
 }

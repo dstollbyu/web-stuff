@@ -210,6 +210,7 @@ const SearchPage = () => {
     </>
   );
 };
+/* APPLICATION END */
 
 // Component definition for SearchForm to be used in return statement
 const SearchForm = ({ searchTerm, onSearchInput, onSearchSubmit }) => (
@@ -315,7 +316,6 @@ const List = ({ list, onRemoveItem }) => {
     </div>
   )
 };
-/* APPLICATION END */
 
 // Item component that shows a story's details of the title, author, number of comments, and points, along with a Dismiss button to remove from the query
 const Item = ( { item, onRemoveItem } ) => {

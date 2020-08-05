@@ -34,7 +34,7 @@ const MainPage = () => {
 
   const searchValues = {
     svg: <svg width="64" height="64" viewBox="0 0 16 16"> <path fillRule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/> <path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/> </svg>,
-    info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i style={{border:'none'}}>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Jest (for testing)</li> </ul></>
+    info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i style={{border:'none'}}>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Axios (for API)</li> </ul></>
   }
 
   const medValues = {
@@ -48,7 +48,7 @@ const MainPage = () => {
   }
 
   return (
-    <div>
+    <div style={{backgroundColor:'#202020'}}>
 
       <main className="main">
         {/* Welcome begin */}
