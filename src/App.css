@@ -53,6 +53,10 @@ main.main {
   border-radius: 50%;
 }
 
+.welcomeDescription {
+  width: 400px;
+}
+
 #links {
   display: flex;
   flex-direction: row;

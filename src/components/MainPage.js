@@ -5,6 +5,7 @@ import githubLogo from '../images/GitHub-Mark-120px-plus.png';
 import ProjectTile from './projectTile.js';
 
 import profilePic from '../images/personPhotoZoomed.jpg';
+import twitchLogo from '../images/TwitchGlitchBlackOps.png';
 
 
 const MainPage = () => {
@@ -33,7 +34,7 @@ const MainPage = () => {
 
   const searchValues = {
     svg: <svg width="64" height="64" viewBox="0 0 16 16"> <path fillRule="evenodd" d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z"/> <path fillRule="evenodd" d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z"/> </svg>,
-    info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i style={{border:'none'}}>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Jest (for testing)</li> </ul></>
+    info: <><p> I used the hacker news API to generate a list of stories. I also created a search bar for that list. Click <a href="https://hn.algolia.com/api" target="_blank" rel="noopener noreferrer">here</a> for the hacker news API. I made this based on instruction found in <a href="https://www.roadtoreact.com/" target="_blank" rel="noopener noreferrer"><i style={{border:'none'}}>The Road to React</i></a> by Robin Wieruch. </p> <p> For this app, I used the following: </p> <ul> <li>CSS</li> <li>JavaScript</li> <li>React (Hooks)</li> <li>Axios (for API)</li> </ul></>
   }
 
   const medValues = {
@@ -41,17 +42,24 @@ const MainPage = () => {
     info: <><p>This is based on a number of medical office sites that you see on the web.</p><p>For this site, I used the following:</p><ul><li>React</li><li>CSS</li></ul></>
   }
 
+  const clipValues = {
+    svg: <img src={twitchLogo} height="64" alt="" />,
+    info: <><p>Lipsum</p></>
+  }
+
   return (
-    <div>
+    <div style={{backgroundColor:'#202020'}}>
 
       <main className="main">
         {/* Welcome begin */}
         <section id="welcome-section" name="welcome-section">
           <p style={{fontSize: '24px'}}>About me -<b>[Darren Stoll]</b></p>
           <img className="profilePic" src={profilePic} alt="" />
-          <p>I am an aspiring web developer with a focus on React.</p>
-          <p>I am currently proficient in JavaScript, React, Express, and Node.js.</p>
-          <p>I am always learning!</p>
+          <div className="welcomeDescription">
+            <p>I am an aspiring web developer with a focus on React.</p>
+            <p>I am currently proficient in JavaScript, React, Express, and Node.js.</p>
+            <p>I am always learning! On the side, I'm a gamer, and I occasionally speedrun the video game or two.</p>
+          </div>
           {/* Putting links here in buttons to various resources about myself */}
           <div id="links">
               {/* image source for icons from icons8.com */}
@@ -68,6 +76,7 @@ const MainPage = () => {
             <ProjectTile name="Markdown Preview" icon={markValues.svg} link="/MarkdownPreview" target="markModal" info={markValues.info} />
             <ProjectTile name="Search Page" icon={searchValues.svg} link="/SearchPage" target="searchModal" info={searchValues.info} />
             <ProjectTile name="Medical Template Site" icon={medValues.svg} link="/MedOfficeTemplate" target="medModal" info={medValues.info} />
+            <ProjectTile name="Twitch Clipper" icon={clipValues.svg} link="/TwitchClipper" target="clipModal" info={clipValues.info} />
           </div>
         </section>
         {/* Projects end */}

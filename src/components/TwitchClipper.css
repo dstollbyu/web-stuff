@@ -1,0 +1,57 @@
+.clipBody {
+  background-color: #404040;
+}
+
+.clipContainer {
+  height: 100vh;
+  margin-top: 54px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search {
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  height: 100px;
+  width: 200px;
+}
+
+.clipListContainer {
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.clipListContainer a {
+  color: black;
+  text-decoration: none;
+}
+
+.twitchThumbnail {
+  width: 80%;
+  vertical-align: middle;
+}
+
+.twitchClipItem {
+  padding: 5px;
+  font-size: 10pt;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.twitchClipItem span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+.twitchClipItem:hover {
+  background-color: #333333;
+}
