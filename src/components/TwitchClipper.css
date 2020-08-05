@@ -1,13 +1,15 @@
 .clipBody {
-  background-color: #404040;
+  
 }
 
 .clipContainer {
-  height: 100vh;
+  height: calc(100vh - 54px);
+  background-color: #404040;
   margin-top: 54px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  overflow-y: scroll;
 }
 
 .search {
@@ -21,9 +23,8 @@
 
 .clipListContainer {
   background-color: white;
-  border: 1px solid black;
-  border-radius: 5px;
   margin-top: 20px;
+  max-width: 800px;
 }
 
 .clipListContainer a {
@@ -32,7 +33,7 @@
 }
 
 .twitchThumbnail {
-  width: 80%;
+  width: 90%;
   vertical-align: middle;
 }
 
@@ -53,5 +54,5 @@
 }
 
 .twitchClipItem:hover {
-  background-color: #333333;
+  background-color: #909090;
 }
