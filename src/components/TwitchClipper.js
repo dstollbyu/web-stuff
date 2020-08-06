@@ -76,7 +76,7 @@ const TwitchClipper = () => {
             fullList = [...fullList, ...responseListAdded.data.data];
             pagination = responseListAdded.data.pagination.cursor;
           }
-          // CHECKPOINT - work on retrieving game title to put alongside clip tomorrow
+          // CHECKPOINT - work on retrieving game title to put alongside clip tomorrow, possibly import list for own records of games and retrieve from that? 
 
           // setClips to that information
           setClips(fullList);
