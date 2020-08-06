@@ -11,6 +11,9 @@ const TwitchClipper = () => {
   const [clips, setClips] = React.useState([]);
   // State hook to handle the url of the API to grab the userId
   const [url, setUrl] = React.useState('https://api.twitch.tv/helix/users?login=')
+  // State hook to handle loading screen and initial screen (appears blank if hasn't been initialized)
+  const [isLoading, setIsLoading] = React.useState(false);
+  const [isInit, setIsInit] = React.useState(false);
 
   // useEffect hook that does the work when "Submit" is clicked and the url changes
   React.useEffect(() => {
@@ -27,11 +30,17 @@ const TwitchClipper = () => {
 
       // Asynchronous function to handle the axios calls
       const fetchData = async () => {
+        setIsInit(true);
+        setIsLoading(true);
         setClips([]);
         let userId;
         // Use axios to return a JSON response with the user id based on the username entered
         const responseUserId = await axios(configUserId);
         if (responseUserId.data.data.length !== 0) userId = responseUserId.data.data[0].id;
+
+        // Full list of clips array
+        let fullList = [];
+
         // If userId is defined, then pull the list of clips
         if (userId !== undefined) {
           // Defines config variable to be used for retrieving clip info from user id
@@ -45,8 +54,33 @@ const TwitchClipper = () => {
           }
           // Use axios to return a JSON response with clip information based on the user id
           const responseList = await axios(configClipInfo);
+          // Append the responseList to the fullList
+          fullList = [...fullList, ...responseList.data.data];
+          let pagination = responseList.data.pagination.cursor;
+          // Define variables to be used outside of loop
+          let configClipInfoAdded, responseListAdded;
+          // Loop to get another 5 sets
+          for (let i = 0; i < 5; i++) {
+            // If there are no more pages, break the loop
+            if (pagination === undefined) break;
+            // Defines the next config variable to be used for retrieving clip info from user id
+            configClipInfoAdded = {
+              method: 'get',
+              url: `https://api.twitch.tv/helix/clips?broadcaster_id=${userId}&first=100&after=${pagination}`,
+              headers: { 
+                'client-id': '2zrys8su2u1tm0yip0adcvx2s7czr2', 
+                'Authorization': process.env.REACT_APP_TWITCH_AUTH
+              }
+            }
+            responseListAdded = await axios(configClipInfoAdded);
+            fullList = [...fullList, ...responseListAdded.data.data];
+            pagination = responseListAdded.data.pagination.cursor;
+          }
+          // CHECKPOINT - work on retrieving game title to put alongside clip tomorrow, possibly import list for own records of games and retrieve from that? 
+
           // setClips to that information
-          setClips(responseList.data.data);
+          setClips(fullList);
+          setIsLoading(false);
         }
       }
       fetchData();
@@ -58,7 +92,12 @@ const TwitchClipper = () => {
       <NavbarProj />
       <div className="clipContainer">
         <SearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} setUrl={setUrl} />
-        <List clipsList={clips} />
+        {isLoading ? (
+          <div style={{color:'white'}}>Loading ...</div>
+        ) : isInit ? (
+          <List clipsList={clips} />
+        ) : <div>&nbsp;</div>
+        }
       </div>
     </div>
   )
@@ -76,9 +115,17 @@ const SearchForm = ({ searchTerm, setSearchTerm, setUrl }) => {
 
 // List component that holds the Twitch clips list
 const List = ({ clipsList }) => {
-  // console.log(clipsList);
   return (
     <div className="clipListContainer">
+      {/* Table header */}
+      <div style={{display: 'flex', fontWeight:'bold'}}>
+        <span style={{width: '10%'}}>&nbsp;</span>
+        <span style={{width: '40%', textAlign: 'center'}}>Clip Title</span>
+        <span style={{width: '20%', textAlign: 'right'}}>Streamer</span>
+        <span style={{width: '20%', textAlign: 'right'}}>Clipper</span>
+        <span style={{width: '20%', textAlign: 'right'}}>View Count</span>
+      </div>
+      {/* Table items */}
       {clipsList.map((item) => (<Item key={item.id} item={item} />))}
     </div>
   )
