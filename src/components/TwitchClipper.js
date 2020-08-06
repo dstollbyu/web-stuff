@@ -87,7 +87,7 @@ const TwitchClipper = () => {
         }
       }
       console.log(process.env.REACT_APP_TEST_ENV);
-      console.log(authToken);
+      console.log(process.env.REACT_APP_TWITCH_AUTH);
 
       fetchData();
     }
