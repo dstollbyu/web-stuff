@@ -83,11 +83,13 @@ const TwitchClipper = () => {
           setIsLoading(false);
         }
       }
+      console.log(process.env.REACT_APP_TEST_ENV)
+
       fetchData();
     }
   }, [url]);
-
   return (
+    
     <div className="clipBody">
       <NavbarProj />
       <div className="clipContainer">
