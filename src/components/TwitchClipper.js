@@ -15,9 +15,6 @@ const TwitchClipper = () => {
   const [isLoading, setIsLoading] = React.useState(false);
   const [isInit, setIsInit] = React.useState(false);
 
-  const clientID = '2zrys8su2u1tm0yip0adcvx2s7czr2';
-  const authToken = process.env.REACT_APP_TWITCH_AUTH;
-
   // useEffect hook that does the work when "Submit" is clicked and the url changes
   React.useEffect(() => {
     if (url !== 'https://api.twitch.tv/helix/users?login=') {
@@ -26,8 +23,8 @@ const TwitchClipper = () => {
           method: 'get',
           url: url,
           headers: { 
-            'client-id': clientID, 
-            'Authorization': authToken
+            'client-id': '2zrys8su2u1tm0yip0adcvx2s7czr2', 
+            'Authorization': process.env.REACT_APP_TWITCH_AUTH
         }
       };
 
@@ -51,8 +48,8 @@ const TwitchClipper = () => {
             method: 'get',
             url: `https://api.twitch.tv/helix/clips?broadcaster_id=${userId}&first=10`,
             headers: { 
-              'client-id': clientID, 
-              'Authorization': authToken
+              'client-id': '2zrys8su2u1tm0yip0adcvx2s7czr2', 
+              'Authorization': process.env.REACT_APP_TWITCH_AUTH
             }
           }
           // Use axios to return a JSON response with clip information based on the user id
@@ -86,8 +83,7 @@ const TwitchClipper = () => {
           setIsLoading(false);
         }
       }
-      console.log(process.env.REACT_APP_TEST_ENV);
-      console.log(authToken);
+      console.log(process.env.REACT_APP_TEST_ENV)
 
       fetchData();
     }
