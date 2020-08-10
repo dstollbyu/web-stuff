@@ -3,100 +3,169 @@ import './TwitchClipper.css';
 import NavbarProj from './NavbarProj.js';
 import axios from 'axios';
 
+// Set the client ID
+const CLIENT_ID = '2zrys8su2u1tm0yip0adcvx2s7czr2';
+
 // TwitchClipper component that returns the search input as well as the search values
 const TwitchClipper = () => {
   // State hook that handles the searchTerm
   const [searchTerm, setSearchTerm] = React.useState('');
-  // State hook to hold the list of clips
-  const [clips, setClips] = React.useState([]);
   // State hook to handle the url of the API to grab the userId
   const [url, setUrl] = React.useState('https://api.twitch.tv/helix/users?login=')
-  // State hook to handle loading screen and initial screen (appears blank if hasn't been initialized)
-  const [isLoading, setIsLoading] = React.useState(false);
-  const [isInit, setIsInit] = React.useState(false);
+  // Store the userId in a state hook
+  const [userID, setUserID] = React.useState('');
+
+  // clipsReducer that handles each action type and sets corresponding states, including loading and initialized screens and the clips list
+  const clipsReducer = (state, action) => {
+    switch (action.type) {
+      case "CLIPS_FETCH_INIT":
+        return {
+          ...state,
+          isLoading: true,
+          isInit: true,
+          isInvalidID: false,
+          isEmpty: false,
+          page: ''
+        };
+      case "CLIPS_FETCH_SUCCESS":
+        return {
+          ...state,
+          isLoading: false,
+          isInvalidID: false,
+          isEmpty: false,
+          data: 
+            action.payload.list === 0 || action.newUser // Check if current list is empty or if a new user is being loaded
+              ? action.payload.list
+              : state.data.concat(action.payload.list),
+          page: action.payload.page
+        };
+      case "CLIPS_FETCH_INVALID_ID":
+        return {
+          ...state,
+          isLoading: false,
+          isInvalidID: true,
+          isEmpty: false,
+          data: [],
+          page: ''
+        }
+      case "CLIPS_FETCH_EMPTY":
+        return {
+          ...state,
+          isLoading: false,
+          isInvalidID: false,
+          isEmpty: true,
+          data: [],
+          page: ''
+        }
+      default: 
+        throw new Error();
+    }
+  }
+
+  // Reducer hook that handles the clip data
+  const [clips, dispatchClips] = React.useReducer(
+    clipsReducer,
+    { data: [], isLoading: false, isInit: false, isInvalidID: false, isEmpty: false, page: '' }
+  )
+  
+  // useEffect hook to handle detecting when scrolled to bottom of page
+  React.useEffect(() => {
+    // Function that handles adding more clips to page when scrolled to bottom
+    const handleMore = async () => {
+      let configClipInfo = {
+        method: 'get',
+        url: `https://api.twitch.tv/helix/clips?broadcaster_id=${userID}&first=20&after=${clips.page}`,
+        headers: { 
+          'client-id': CLIENT_ID, 
+          'Authorization': process.env.REACT_APP_TWITCH_AUTH
+        }
+      }
+      let responseList = await axios(configClipInfo);
+      dispatchClips({ type: 'CLIPS_FETCH_SUCCESS', payload: { list: responseList.data.data, page: responseList.data.pagination.cursor } });
+    }
+
+    const onScroll = (e) => {
+      // If the scroll hits the bottom, execute handleMore function
+      if (e.target.offsetHeight + e.target.scrollTop >= e.target.scrollHeight && clips.page !== undefined && clips.isInit) {
+        handleMore();
+      }
+    }
+
+    //Add/remove event listeners for scrolling
+    document.getElementById("clipBody").addEventListener('scroll', onScroll);
+    return () => document.getElementById("clipBody").removeEventListener("scroll", onScroll);
+  },[userID, clips.page, clips.isInit]);
+
 
   // useEffect hook that does the work when "Submit" is clicked and the url changes
   React.useEffect(() => {
     if (url !== 'https://api.twitch.tv/helix/users?login=') {
+      
       // Defines config variable to be used for retrieving user id
       let configUserId = {
           method: 'get',
           url: url,
           headers: { 
-            'client-id': '2zrys8su2u1tm0yip0adcvx2s7czr2', 
+            'client-id': CLIENT_ID, 
             'Authorization': process.env.REACT_APP_TWITCH_AUTH
         }
       };
 
       // Asynchronous function to handle the axios calls
       const fetchData = async () => {
-        setIsInit(true);
-        setIsLoading(true);
-        setClips([]);
-        let userId;
+        dispatchClips({ type: 'CLIPS_FETCH_INIT' });
+        
         // Use axios to return a JSON response with the user id based on the username entered
         const responseUserId = await axios(configUserId);
-        if (responseUserId.data.data.length !== 0) userId = responseUserId.data.data[0].id;
-
-        // Full list of clips array
-        let fullList = [];
+        if (responseUserId.data.data.length !== 0) {
+          setUserID(responseUserId.data.data[0].id);
+        } else {
+          setUserID('');
+        }
 
         // If userId is defined, then pull the list of clips
-        if (userId !== undefined) {
+        if (userID !== '') {
           // Defines config variable to be used for retrieving clip info from user id
           let configClipInfo = {
             method: 'get',
-            url: `https://api.twitch.tv/helix/clips?broadcaster_id=${userId}&first=10`,
+            url: `https://api.twitch.tv/helix/clips?broadcaster_id=${userID}&first=20`,
             headers: { 
-              'client-id': '2zrys8su2u1tm0yip0adcvx2s7czr2', 
+              'client-id': CLIENT_ID, 
               'Authorization': process.env.REACT_APP_TWITCH_AUTH
             }
           }
           // Use axios to return a JSON response with clip information based on the user id
           const responseList = await axios(configClipInfo);
-          // Append the responseList to the fullList
-          fullList = [...fullList, ...responseList.data.data];
-          let pagination = responseList.data.pagination.cursor;
-          // Define variables to be used outside of loop
-          let configClipInfoAdded, responseListAdded;
-          // Loop to get another 5 sets
-          for (let i = 0; i < 5; i++) {
-            // If there are no more pages, break the loop
-            if (pagination === undefined) break;
-            // Defines the next config variable to be used for retrieving clip info from user id
-            configClipInfoAdded = {
-              method: 'get',
-              url: `https://api.twitch.tv/helix/clips?broadcaster_id=${userId}&first=100&after=${pagination}`,
-              headers: { 
-                'client-id': '2zrys8su2u1tm0yip0adcvx2s7czr2', 
-                'Authorization': process.env.REACT_APP_TWITCH_AUTH
-              }
-            }
-            responseListAdded = await axios(configClipInfoAdded);
-            fullList = [...fullList, ...responseListAdded.data.data];
-            pagination = responseListAdded.data.pagination.cursor;
-          }
-          // CHECKPOINT - work on retrieving game title to put alongside clip tomorrow, possibly import list for own records of games and retrieve from that? 
 
-          // setClips to that information
-          setClips(fullList);
-          setIsLoading(false);
+          // setClips via reducer dispatch function to that information
+          if (responseList.data.data.length === 0) { // If there are no clips associated with userID, show error message of empty list
+            dispatchClips({ type: 'CLIPS_FETCH_EMPTY' });
+          } else { // Else load the list, passing in a newUser parameter that checks if the user is different from the last one
+            dispatchClips({ type: 'CLIPS_FETCH_SUCCESS', payload: { list: responseList.data.data, page: responseList.data.pagination.cursor }, newUser: true });
+          }
+          
+        } else { // Else return an invalid ID error message
+          dispatchClips({ type: 'CLIPS_FETCH_INVALID_ID' });
         }
       }
 
       fetchData();
     }
-  }, [url]);
-  return (
-    
+  }, [url, userID]);
+
+  return (  
     <div className="clipBody">
       <NavbarProj />
-      <div className="clipContainer">
+      <div id="clipBody" className="clipContainer">
         <SearchForm searchTerm={searchTerm} setSearchTerm={setSearchTerm} setUrl={setUrl} />
-        {isLoading ? (
+        {clips.isLoading ? (
           <div style={{color:'white'}}>Loading ...</div>
-        ) : isInit ? (
-          <List clipsList={clips} />
+        ) : clips.isInvalidID ? (
+          <div style={{color:'white'}}>Invalid user ID</div>
+        ) : clips.isEmpty ? (
+          <div style={{color:'white'}}>No clips associated with userID</div>
+        ) : clips.isInit ? (
+          <List clipsList={clips.data} />
         ) : <div>&nbsp;</div>
         }
       </div>
@@ -108,7 +177,11 @@ const SearchForm = ({ searchTerm, setSearchTerm, setUrl }) => {
   return (
     <form onSubmit={event => {setUrl(`https://api.twitch.tv/helix/users?login=${searchTerm}`); event.preventDefault();}} className="search">
       <p>Enter a username:</p>
-      <input id="search" isfocused="true" value={searchTerm} onChange={event => setSearchTerm(event.target.value)} />
+      <input id="search" isfocused="true" value={searchTerm} onChange={event => {
+        let searchTrimmedTerm = event.target.value.trim(); // Don't allow for spaces in the search term
+        setSearchTerm(searchTrimmedTerm);
+        }
+      } />
       <button type="submit" disabled={!searchTerm}>Submit</button>
     </form>
   );

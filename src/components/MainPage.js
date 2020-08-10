@@ -44,7 +44,7 @@ const MainPage = () => {
 
   const clipValues = {
     svg: <img src={twitchLogo} height="64" alt="" />,
-    info: <><p>Lipsum</p></>
+    info: <><p>!!UNDER CONSTRUCTION!!</p></>
   }
 
   return (
