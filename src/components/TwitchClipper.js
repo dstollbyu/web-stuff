@@ -2,6 +2,9 @@ import React from 'react';
 import './TwitchClipper.css';
 import NavbarProj from './NavbarProj.js';
 import axios from 'axios';
+// import DatePicker from 'react-datepicker'
+
+// import "react-datepicker/dist/react-datepicker.css" // CSS that allows the calendar to show up properly in datepicker
 
 // Set the client ID
 const CLIENT_ID = '2zrys8su2u1tm0yip0adcvx2s7czr2';
@@ -174,16 +177,32 @@ const TwitchClipper = () => {
 }
 
 const SearchForm = ({ searchTerm, setSearchTerm, setUrl }) => {
+  // const [startDate, setStartDate] = React.useState('');
+  // const [endDate, setEndDate] = React.useState('');
+
   return (
-    <form onSubmit={event => {setUrl(`https://api.twitch.tv/helix/users?login=${searchTerm}`); event.preventDefault();}} className="search">
-      <p>Enter a username:</p>
-      <input id="search" isfocused="true" value={searchTerm} onChange={event => {
-        let searchTrimmedTerm = event.target.value.trim(); // Don't allow for spaces in the search term
-        setSearchTerm(searchTrimmedTerm);
-        }
-      } />
-      <button type="submit" disabled={!searchTerm}>Submit</button>
-    </form>
+    <div className="search">
+      <form onSubmit={event => {setUrl(`https://api.twitch.tv/helix/users?login=${searchTerm}`); event.preventDefault();}}>
+        <p>Enter a username:</p>
+        <input id="search" isfocused="true" value={searchTerm} onChange={event => {
+          let searchTrimmedTerm = event.target.value.trim(); // Don't allow for spaces in the search term
+          setSearchTerm(searchTrimmedTerm);
+          }
+        } />
+        {/* DatePicker tools for start-end dates if I want to go that route */}
+        {/* <div style={{display: 'flex', justifyContent: 'space-between', textAlign:'center'}}>
+          <div className="customDatePickerWidth">
+            <p>Start Date:<br /><i>(optional)</i></p>
+            <DatePicker selected={startDate} onChange={date => setStartDate(date)} />
+          </div>
+          <div className="customDatePickerWidth">
+            <p>End Date:<br /><i>(optional)</i></p>
+            <DatePicker selected={endDate} onChange={date => setEndDate(date)} />
+          </div>
+        </div> */}
+        <button className="clipSubmit" type="submit" disabled={!searchTerm}>Submit</button>
+      </form>
+    </div>
   );
 };
 

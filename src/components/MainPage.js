@@ -9,18 +9,6 @@ import twitchLogo from '../images/TwitchGlitchBlackOps.png';
 
 
 const MainPage = () => {
-  // navbarArgs holds the values to be used in the header navbar
-  // const navbarArgs = [
-  //   {
-  //     link: "#welcome-section",
-  //     name: "Welcome"
-  //   },
-  //   {
-  //     link: "#project-section",
-  //     name: "Projects"
-  //   }
-  // ]
-
   // Values for the ProjectTile components
   const pomoValues = {
     svg: <svg width="64" height="64" viewBox="0 0 16 16"> <path fillRule="evenodd" d="M8.515 1.019A7 7 0 0 0 8 1V0a8 8 0 0 1 .589.022l-.074.997zm2.004.45a7.003 7.003 0 0 0-.985-.299l.219-.976c.383.086.76.2 1.126.342l-.36.933zm1.37.71a7.01 7.01 0 0 0-.439-.27l.493-.87a8.025 8.025 0 0 1 .979.654l-.615.789a6.996 6.996 0 0 0-.418-.302zm1.834 1.79a6.99 6.99 0 0 0-.653-.796l.724-.69c.27.285.52.59.747.91l-.818.576zm.744 1.352a7.08 7.08 0 0 0-.214-.468l.893-.45a7.976 7.976 0 0 1 .45 1.088l-.95.313a7.023 7.023 0 0 0-.179-.483zm.53 2.507a6.991 6.991 0 0 0-.1-1.025l.985-.17c.067.386.106.778.116 1.17l-1 .025zm-.131 1.538c.033-.17.06-.339.081-.51l.993.123a7.957 7.957 0 0 1-.23 1.155l-.964-.267c.046-.165.086-.332.12-.501zm-.952 2.379c.184-.29.346-.594.486-.908l.914.405c-.16.36-.345.706-.555 1.038l-.845-.535zm-.964 1.205c.122-.122.239-.248.35-.378l.758.653a8.073 8.073 0 0 1-.401.432l-.707-.707z"/> <path fillRule="evenodd" d="M8 1a7 7 0 1 0 4.95 11.95l.707.707A8.001 8.001 0 1 1 8 0v1z"/> <path fillRule="evenodd" d="M7.5 3a.5.5 0 0 1 .5.5v5.21l3.248 1.856a.5.5 0 0 1-.496.868l-3.5-2A.5.5 0 0 1 7 9V3.5a.5.5 0 0 1 .5-.5z"/> </svg>,
@@ -44,7 +32,7 @@ const MainPage = () => {
 
   const clipValues = {
     svg: <img src={twitchLogo} height="64" alt="" />,
-    info: <><p>!!UNDER CONSTRUCTION!!</p></>
+    info: <><p><b>!!UNDER CONSTRUCTION!!</b></p><p>This is a page that connect to Twitch.tv's API and retrieves 20 clips per request based on the username entered.</p><p>For this site, I used the following:</p><ul><li>React</li><li>Axios (for REST API)</li></ul></>
   }
 
   return (
@@ -56,15 +44,14 @@ const MainPage = () => {
           <p style={{fontSize: '24px'}}>About me -<b>[Darren Stoll]</b></p>
           <img className="profilePic" src={profilePic} alt="" />
           <div className="welcomeDescription">
-            <p>I am an aspiring web developer with a focus on React.</p>
-            <p>I am currently proficient in JavaScript, React, Express, and Node.js.</p>
-            <p>I am always learning! On the side, I'm a gamer, and I occasionally speedrun the video game or two.</p>
+            <p>I am a web developer with a focus on React.</p>
+            <p>I am proficient in JavaScript, React, Express, and Node.js.</p>
           </div>
           {/* Putting links here in buttons to various resources about myself */}
           <div id="links">
               {/* image source for icons from icons8.com */}
-              <a className="linkedinLink" href="https://www.linkedin.com/in/darren-stoll-5849791ab/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
-              <a className="githubLink" href="https://github.com/dstollbyu" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
+              <a className="linkedinLink" href="https://www.linkedin.com/in/darren-stoll/" target="_blank" rel="noopener noreferrer"><img className="linkedinIcon" src={linkedinLogo} alt="LinkedIn Profile" title="LinkedIn Profile" /></a>
+              <a className="githubLink" href="https://github.com/darren-stoll" target="_blank" rel="noopener noreferrer"><img className="githubIcon" src={githubLogo} alt="GitHub Profile" title="GitHub Profile" /></a>
           </div>
         </section>
         {/* Welcome end */}

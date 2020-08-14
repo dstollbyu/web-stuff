@@ -1,7 +1,7 @@
 
 /* Begin Arrow from w3schools */
 
-i {
+i.arrow {
   border: solid black;
   border-width: 0 3px 3px 0;
   display: inline-block;

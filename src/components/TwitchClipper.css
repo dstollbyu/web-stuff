@@ -1,7 +1,3 @@
-.clipBody {
-  
-}
-
 .clipContainer {
   height: calc(100vh - 54px);
   background-color: #404040;
@@ -17,8 +13,22 @@
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  height: 100px;
-  width: 200px;
+}
+
+.customDatePickerWidth,
+.customDatePickerWidth > div.react-datepicker-wrapper, 
+.customDatePickerWidth > div > div.react-datepicker__input-container,
+.customDatePickerWidth > div > div.react-datepicker__input-container input {
+   width: 80px;
+   text-align: center;
+}
+
+.clipSubmit {
+  margin: 0;
+  width: 100%;
+  margin-top: 20px;
+  display: block;
+  
 }
 
 .clipListContainer {
