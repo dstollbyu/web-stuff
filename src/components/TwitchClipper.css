@@ -67,3 +67,10 @@
 .twitchClipItem:hover {
   background-color: #909090;
 }
+
+/* For Mobile devices */
+@media only screen and (max-width: 400px) {
+  .clipListContainer {
+    max-width: 350px;
+  }
+}

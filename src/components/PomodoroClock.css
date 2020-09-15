@@ -73,3 +73,13 @@ i.arrow {
   outline: 0;
   box-shadow: none;
 }
+
+/* For Mobile devices */
+@media only screen and (max-width: 400px) {
+  .sessionControl,
+  .breakControl {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2px 6px 2px 6px;
+  }
+}

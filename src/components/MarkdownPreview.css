@@ -26,3 +26,10 @@
   background-color: #eeeeee;
   text-align: left;
 }
+
+/* For Mobile devices */
+@media only screen and (max-width: 400px) {
+  #preview, #editor {
+    width: 370px;
+  }
+}
