@@ -1,11 +1,11 @@
 import React from 'react';
-// import Navbar from './Navbar.js';
 import linkedinLogo from '../images/LI-In-Bug.png';
 import githubLogo from '../images/GitHub-Mark-120px-plus.png';
 import ProjectTile from './projectTile.js';
 
 import profilePic from '../images/personPhotoZoomed.jpg';
 import twitchLogo from '../images/TwitchGlitchBlackOps.png';
+import covidIcon from '../images/covidIcon.svg';
 
 
 const MainPage = () => {
@@ -35,17 +35,23 @@ const MainPage = () => {
     info: <><p><b>!!UNDER CONSTRUCTION!!</b></p><p>This is a page that connect to Twitch.tv's API and retrieves 20 clips per request based on the username entered.</p><p>For this site, I used the following:</p><ul><li>React</li><li>Axios (for REST API)</li></ul></>
   }
 
+  const covidValues = {
+    svg: <img src={covidIcon} height="64" alt="" />,
+    info: <><p><b>!!UNDER CONSTRUCTION!!</b></p><p>I built this page at the request of a client who wants to display various data for COVID-19 in the United States, including mortality and infection rates.</p><p>For this site, I used the following:</p><ul><li>React</li><li>Axios (for content retrieval)</li><li>react-usa-map (for the interactive map)</li></ul></>
+  }
+
   return (
     <div style={{backgroundColor:'#202020'}}>
 
       <main className="main">
         {/* Welcome begin */}
         <section id="welcome-section" name="welcome-section">
-          <p style={{fontSize: '24px'}}>About me -<b>[Darren Stoll]</b></p>
+          <p style={{fontSize: '24px'}}>About me - <b>[Darren Stoll]</b></p>
           <img className="profilePic" src={profilePic} alt="" />
           <div className="welcomeDescription">
-            <p>I am a web developer with a focus on React.</p>
+            <p>I am a front-end software engineer specializing in React.</p>
             <p>I am proficient in JavaScript, React, Express, and Node.js.</p>
+            <p>I have been working in web development off and on since 1998, building solutions for myself and others.</p>
           </div>
           {/* Putting links here in buttons to various resources about myself */}
           <div id="links">
@@ -57,13 +63,17 @@ const MainPage = () => {
         {/* Welcome end */}
         {/* Projects begin */}
         <section id="project-section" className="hidden" name="project-section">
-          <h2>Projects</h2>
+          <h2>Major Projects</h2>
+          <div id="projects" name="projects">
+            <ProjectTile name="COVID19 Watch" icon={covidValues.svg} link="https://jlc42.github.io/" target="covidModal" info={covidValues.info} /> 
+            <ProjectTile name="Search Page" icon={searchValues.svg} link="/SearchPage" target="searchModal" info={searchValues.info} />
+            <ProjectTile name="Twitch Clipper" icon={clipValues.svg} link="/TwitchClipper" target="clipModal" info={clipValues.info} />
+          </div>
+          <h2>Minor Projects</h2>
           <div id="projects" name="projects">
             <ProjectTile name="Pomodoro Clock" icon={pomoValues.svg} link="/PomodoroClock" target="pomoModal" info={pomoValues.info} />
             <ProjectTile name="Markdown Preview" icon={markValues.svg} link="/MarkdownPreview" target="markModal" info={markValues.info} />
-            <ProjectTile name="Search Page" icon={searchValues.svg} link="/SearchPage" target="searchModal" info={searchValues.info} />
             <ProjectTile name="Medical Template Site" icon={medValues.svg} link="/MedOfficeTemplate" target="medModal" info={medValues.info} />
-            <ProjectTile name="Twitch Clipper" icon={clipValues.svg} link="/TwitchClipper" target="clipModal" info={clipValues.info} />
           </div>
         </section>
         {/* Projects end */}
