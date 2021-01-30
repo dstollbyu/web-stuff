@@ -49,7 +49,7 @@ const MainPage = () => {
           <p style={{fontSize: '24px'}}>About me - <b>[Darren Stoll]</b></p>
           <img className="profilePic" src={profilePic} alt="" />
           <div className="welcomeDescription">
-            <p>I am a front-end software engineer specializing in React.</p>
+            <p>I am a full stack software engineer specializing in React.</p>
             <p>I am proficient in JavaScript, React, Express, and Node.js.</p>
             <p>I have been working in web development off and on since 1998, building solutions for myself and others.</p>
           </div>
